@@ -5,7 +5,7 @@
 Simple Bowling Java console application ( javaFX in future :) ). 
 The program counts the number of points each Player after each ball throw.
 
-**To see results run src\main\java\simple.Main.java** 
+**To see results run _src\main\java\simple.Main.java_** 
 
 ## Set Players.
 
@@ -13,7 +13,7 @@ By default exists 5 Players:
 - *2 created by name ( Timo and Anton )*
 - *3 by default ( Player-1,  Player-2, Player-3 )*  
   
-*1.* For create players by names, in src\main\java\simple.MainExecutor.java, 
+*1.* For create players by names, in **_src\main\java\simple.MainExecutor.java_**, 
 in method startInteractiveGame() need sign players as String start with 2-nd paremeter,
 any players number, separetes by coma.
 For example, to create 2 named players Timo and Anton:
@@ -36,7 +36,7 @@ cpi = new CreateDefaultPlayers(mainGame, 0);
 
 ## Set score type.
  
-By default filling Score type for Players signed Rundomly, in src\main\java\simple.MainExecutor.java: 
+By default filling Score type for Players signed Rundomly, in **_src\main\java\simple.MainExecutor.java_**: 
 mainGame.startGame( new GameTypeRandom() );
 
 To customize different filling Score type for Players: 
