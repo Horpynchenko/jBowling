@@ -7,7 +7,7 @@ public class MainExecutor {
 
     /**
      *
-     * New score getting for players depends of GameTypeInterface realization:
+     * New getting scores for players, depends of GameTypeInterface realization:
      * - input from console:     mainGame.startGame( new GameTypeConsoleInput() );
      * - randomly:               mainGame.startGame( new GameTypeRandom() );
      * - static for all players: mainGame.startGame( new GameTypeStatic() );
@@ -17,9 +17,11 @@ public class MainExecutor {
         // filling players:
         MainGame mainGame = new MainGame();
 
-        mainGame.createPlayer("Timo");
-        mainGame.createPlayer("Anton");
-        mainGame.createDefaultPlayers(3);
+        CreatePlayerInterface cpi = new CreateNamedPlayer(mainGame, "Timo", "Anton");
+        cpi.createPlayers();
+
+        cpi = new CreateDefaultPlayers(mainGame, 3);
+        cpi.createPlayers();
 
         // filling scores for each player during game:
         mainGame.startGame( new GameTypeRandom() ); // <- Change Interface realization to see difference
@@ -27,7 +29,7 @@ public class MainExecutor {
         // show results and winners:
         mainGame.printWinner();
 
-        // next dialog
+        // TODO: 24.03.2016 next dialog
 
     }
 }
