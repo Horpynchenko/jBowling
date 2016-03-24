@@ -31,13 +31,8 @@ public class MainGame {
 
     /**
      * Game start method.
-     * New score getting for players depends of GameTypeInterface realization:
-     * - input from console:     GameTypeInterface gti = new GameTypeConsoleInput();
-     * - randomly:               GameTypeInterface gti = new GameTypeRandom();
-     * - static for all players: GameTypeInterface gti = new GameTypeStatic();
-     * - input from GUI:         GameTypeInterface gti = new GameTypeFromGUI(); // <- create realization
      */
-    public void startGame(){
+    public void startGame( GameTypeInterface gti ){
         for (int currentThrow = 1; currentThrow <= 21; currentThrow++) {
             // loop through each of player
             Iterator it = playersMap.entrySet().iterator();
@@ -49,7 +44,7 @@ public class MainGame {
                 if ( isThrowAvailable(currentThrow, tmpUsersScoreMap) ){ //if player have right to throw
                     // new throw score: from input, randomly or static
                     // ... f.e. static, 4
-                    GameTypeInterface gti = new GameTypeRandom(); // Change Interface realization to see difference
+
                     int newScore = 0;
                     try {
                         newScore = gti.getCurrentScore();
@@ -148,16 +143,13 @@ public class MainGame {
                                     resultScore += scoreMap.get(throwingCount + 2);
                                 }
                             }
-                            throwingCount = throwingCount + 1;
 
                         } else { // if next elements are not filled
                             resultScore += scoreMap.get(throwingCount);
-                            throwingCount = throwingCount + 1;
                         }
 
                     } else {
                         resultScore += scoreMap.get(throwingCount);
-                        throwingCount++;
                     }
                 } else
 
@@ -178,17 +170,15 @@ public class MainGame {
                                  resultScore += scoreMap.get(throwingCount);
                              }
                          }
-                        throwingCount++;
                     } else {
                         resultScore += scoreMap.get(throwingCount);
-                        throwingCount++;
                     }
                 }
 
             } else { // if current >= 19
                 resultScore += scoreMap.get(throwingCount);
-                throwingCount++;
             }
+            throwingCount++;
         }
         return resultScore;
     }
