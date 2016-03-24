@@ -18,22 +18,23 @@ in method startInteractiveGame() need sign players as String start with 2-nd par
 any players number, separetes by coma.
 For example, to create 2 named players Timo and Anton:
 
-CreatePlayerInterface cpi = new CreateNamedPlayer(mainGame, "Timo", "Anton");
+  CreatePlayerInterface cpi = new CreateNamedPlayer(mainGame, "Timo", "Anton");
 
 To create no named users, sign empty string as 2-nd paramerer:
 
-CreatePlayerInterface cpi = new CreateNamedPlayer(mainGame, "");
+  CreatePlayerInterface cpi = new CreateNamedPlayer(mainGame, "");
 
 b) To create players with default names, sign number of default players as 2-nd parameter.
 For example, to create 3 default players:
 
-cpi = new CreateDefaultPlayers(mainGame, 3);
+  cpi = new CreateDefaultPlayers(mainGame, 3);
 
 To create no default users, sign 0 (zero) as 2-nd parameter:
 
-cpi = new CreateDefaultPlayers(mainGame, 0);
+  cpi = new CreateDefaultPlayers(mainGame, 0);
 
 2. Set score type.
+ 
 By default filling Score type for Players signed Rundomly, in src\main\java\simple.MainExecutor.java: 
 mainGame.startGame( new GameTypeRandom() );
 
