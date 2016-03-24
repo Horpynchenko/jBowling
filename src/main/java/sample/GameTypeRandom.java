@@ -7,7 +7,6 @@ import java.util.concurrent.ThreadLocalRandom;
  */
 public class GameTypeRandom implements GameTypeInterface {
 
-    @Override
     public int getCurrentScore() {
         int random = ThreadLocalRandom.current().nextInt(0, 11);
         return random;

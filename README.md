@@ -14,13 +14,13 @@ By default exists 5 Players:
 - *3 by default ( Player-1,  Player-2, Player-3 )*  
   
 *1.* For create players by names, in **_src\main\java\simple.MainExecutor.java_**, 
-in method startInteractiveGame() need sign players as String start with 2-nd paremeter,
-any players number, separetes by coma.
+in method startInteractiveGame() need sign players as String start with 2-nd parameter,
+any players number, separates by coma.
 For example, to create 2 named players Timo and Anton:
 ```java 
 CreatePlayerInterface cpi = new CreateNamedPlayer(mainGame, "Timo", "Anton");
 ```
-To create no named users, sign empty string as 2-nd paramerer:
+To create no named users, sign empty String as 2-nd parameter (or remove interface implementation :-) ) :
 ```java 
 CreatePlayerInterface cpi = new CreateNamedPlayer(mainGame, "");
 ```
@@ -29,7 +29,7 @@ For example, to create 3 default players:
 ```java 
 cpi = new CreateDefaultPlayers(mainGame, 3);
 ```
-To create no default users, sign 0 (zero) as 2-nd parameter:
+To create no default users, sign 0 (zero) as 2-nd parameter (or remove interface implementation :-):
 ```java 
 cpi = new CreateDefaultPlayers(mainGame, 0);
 ```
@@ -50,6 +50,6 @@ mainGame.startGame( new GameTypeRandom() );
 ```
 - *static for all players:* 
 ```java 
-mainGame.startGame( new GameTypeStatic() );
+mainGame.startGame( new GameTypeStatic(<static score in int>) );
 ```
 

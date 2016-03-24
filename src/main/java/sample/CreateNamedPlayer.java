@@ -13,8 +13,14 @@ public class CreateNamedPlayer implements CreatePlayerInterface {
     }
 
     public void createPlayers() {
-        for (int i = 0; i < names.length; i++) {
-            mainGame.createPlayer(names[i]);
+        if (names != null) {
+            if (!names[0].equalsIgnoreCase("") ) {
+                for (int i = 0; i < names.length; i++) {
+                    mainGame.createPlayer(names[i]);
+                }
+            }
         }
     }
 }
+
+

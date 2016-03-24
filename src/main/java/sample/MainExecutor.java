@@ -10,7 +10,7 @@ public class MainExecutor {
      * New getting scores for players, depends of GameTypeInterface realization:
      * - input from console:     mainGame.startGame( new GameTypeConsoleInput() );
      * - randomly:               mainGame.startGame( new GameTypeRandom() );
-     * - static for all players: mainGame.startGame( new GameTypeStatic() );
+     * - static for all players: mainGame.startGame( new GameTypeStatic(<static score in int>) );
      * - input from GUI:         mainGame.startGame( new GameTypeFromGUI() ); // <- create realization
      */
     public static void startInteractiveGame(){
