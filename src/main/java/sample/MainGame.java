@@ -5,7 +5,7 @@ import java.util.*;
 
 public class MainGame {
 
-    private HashMap<String, Player> playersMap = new HashMap<>();
+    private HashMap<String, Player> playersMap = new HashMap<String, Player>();
 
     /**
      * Method for creating single Player with defined name.

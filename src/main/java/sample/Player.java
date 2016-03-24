@@ -12,7 +12,7 @@ public class Player {
     private int championshipScore = 0;
     private int currentThrow = 0;
     private int[] allThrows = new int[21];
-    private Map<Integer, Integer> allThrowsMap = new HashMap<>(21);
+    private Map<Integer, Integer> allThrowsMap = new HashMap<Integer, Integer>(21);
 
     public Map<Integer, Integer> getAllThrowsMap() {
         return allThrowsMap;
