@@ -7,10 +7,10 @@ import java.util.Map;
  * Created by Dmytro on 23.03.2016.
  */
 public class Player {
-    
+
     private String name;
-    private int currentGameScore = 0;
-    private int championshipScore = 0;
+    private int currentGamePoints = 0;
+    private int championshipPoints = 0;
     private int currentThrow = 0;
     private int[] allThrows = new int[MainGame.ALL_GAME_THROWS];
     private Map<Integer, Integer> allThrowsMap = new HashMap<Integer, Integer>(MainGame.ALL_GAME_THROWS);
@@ -47,20 +47,20 @@ public class Player {
         return name;
     }
 
-    public int getCurrentGameScore() {
-        return currentGameScore;
+    public int getCurrentGamePoints() {
+        return currentGamePoints;
     }
 
-    public int getChampionshipScore() {
-        return championshipScore;
+    public int getChampionshipPoints() {
+        return championshipPoints;
     }
 
-    public void setChampionshipScore(int championshipScore) {
-        this.championshipScore = championshipScore;
+    public void setChampionshipPoints(int championshipPoints) {
+        this.championshipPoints = championshipPoints;
     }
 
-    public void setCurrentGameScore(int currentGameScore) {
-        this.currentGameScore = currentGameScore;
+    public void setCurrentGamePoints(int currentGamePoints) {
+        this.currentGamePoints = currentGamePoints;
     }
 
     public void setName(String name) {

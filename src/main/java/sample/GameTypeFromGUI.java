@@ -7,8 +7,9 @@ import java.io.IOException;
  */
 public class GameTypeFromGUI implements GameTypeInterface {
 
-    public int getCurrentScore() throws IOException {
+    public int getCurrentPoints(int maxPossiblePoints) throws IOException {
         //// TODO: 24.03.2016 Create visual interface and get numbers from there
         return 0;
     }
+
 }

@@ -4,14 +4,14 @@ package sample;
  * Created by Dmytro on 24.03.2016.
  */
 public class GameTypeStatic implements GameTypeInterface {
-    private int staticScore;
+    private int staticPoints;
 
-    public GameTypeStatic(int staticScore){
-        this.staticScore = staticScore;
+    public GameTypeStatic(int staticPoints){
+        this.staticPoints = staticPoints;
     }
 
-    public int getCurrentScore() {
-        return staticScore;
+    public int getCurrentPoints(int maxPossiblePoints) {
+        return staticPoints;
     }
 
 }

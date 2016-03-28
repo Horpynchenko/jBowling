@@ -68,7 +68,7 @@ public class MainGameTest {
         cpi = new CreateNamedPlayer(mainGame, "Tester");
         cpi.createPlayers();
         mainGame.startGame( new GameTypeStatic(10) );
-        assertEquals(300, mainGame.getPlayersMap().get("Tester").getCurrentGameScore());
+        assertEquals(300, mainGame.getPlayersMap().get("Tester").getCurrentGamePoints());
     }
 
     @Test
@@ -76,7 +76,7 @@ public class MainGameTest {
         CreatePlayerInterface cpi = new CreateNamedPlayer(mainGame, "Tester");
         cpi.createPlayers();
         mainGame.startGame( new GameTypeStatic(0) );
-        assertEquals(0, mainGame.getPlayersMap().get("Tester").getCurrentGameScore());
+        assertEquals(0, mainGame.getPlayersMap().get("Tester").getCurrentGamePoints());
     }
 
     @Test
@@ -84,7 +84,7 @@ public class MainGameTest {
         cpi = new CreateDefaultPlayers(mainGame, 1);
         cpi.createPlayers();
         mainGame.startGame( new GameTypeStatic(0) );
-        assertEquals(0, mainGame.getPlayersMap().get("Player-1").getCurrentGameScore());
+        assertEquals(0, mainGame.getPlayersMap().get("Player-1").getCurrentGamePoints());
     }
 
     @Test
@@ -92,7 +92,7 @@ public class MainGameTest {
         cpi = new CreateDefaultPlayers(mainGame, 1);
         cpi.createPlayers();
         mainGame.startGame( new GameTypeStatic(10) );
-        assertEquals(300, mainGame.getPlayersMap().get("Player-1").getCurrentGameScore());
+        assertEquals(300, mainGame.getPlayersMap().get("Player-1").getCurrentGamePoints());
     }
 
 }

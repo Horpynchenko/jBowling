@@ -8,34 +8,31 @@ import java.util.Arrays;
  */
 public class GameTypeConsoleInput implements GameTypeInterface{
 
-    @Override
-    public int getCurrentScore() throws IOException {
-        int score = -1;
+    public int getCurrentPoints(int maxPossiblePoints) throws IOException {
+        int points = 0;
         boolean noMatch = true;
         do {
-            System.out.print("Enter your Score (0 - 10) or 'q' for skip: ");
+            System.out.print("Enter your Points (0 - " + maxPossiblePoints + ") or 'q' for skip: ");
             try {
-
                 InputStreamReader isr = new InputStreamReader(System.in);
                 BufferedReader br = new BufferedReader(isr);
                 String str = br.readLine();
 
                 try {
-
                     if (str.equalsIgnoreCase("q")) {
                         noMatch = false;
-                        score = 0;
+                        points = 0;
                     } else {
-                        score = Integer.valueOf(str).intValue();
-                        if (score >= 0 && score <= 10) {
+                        points = Integer.valueOf(str).intValue();
+                        if (points >= 0 && points <= maxPossiblePoints) {
                             noMatch = false;
                         } else {
-                            System.out.println("Incorrect number! Valid number in range from 0 tp 10.");
+                            System.out.println("Incorrect number! Valid number in range from 0 to " + maxPossiblePoints + ".");
                         }
                     }
 
                 } catch (NumberFormatException nfe) {
-                    System.out.println("Incorrect format! Must be a integer digit in range from 0 tp 10.");
+                    System.out.println("Incorrect format! Must be a integer digit in range from 0 to " + maxPossiblePoints + ".");
                 }
 
             } catch (IOException ex) {
@@ -44,7 +41,7 @@ public class GameTypeConsoleInput implements GameTypeInterface{
 
         } while (noMatch);
 
-        return score;
+        return points;
     }
 
 }

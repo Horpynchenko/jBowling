@@ -29,7 +29,7 @@ For example, to create 3 default players:
 ```java 
 cpi = new CreateDefaultPlayers(mainGame, 3);
 ```
-To create no default users, sign 0 (zero) as 2-nd parameter (or remove interface implementation :-):
+To create no default users, sign 0 (zero) as 2-nd parameter (or remove interface implementation :-) ):
 ```java 
 cpi = new CreateDefaultPlayers(mainGame, 0);
 ```

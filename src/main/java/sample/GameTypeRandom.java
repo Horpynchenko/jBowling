@@ -7,8 +7,9 @@ import java.util.concurrent.ThreadLocalRandom;
  */
 public class GameTypeRandom implements GameTypeInterface {
 
-    public int getCurrentScore() {
-        int random = ThreadLocalRandom.current().nextInt(0, MainGame.MAX_FRAME_POINTS+1);
+    public int getCurrentPoints(int maxPossiblePoints) {
+        int random = 0;
+        random = ThreadLocalRandom.current().nextInt(0, maxPossiblePoints + 1);
         return random;
     }
 
