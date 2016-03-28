@@ -7,12 +7,13 @@ import java.util.Map;
  * Created by Dmytro on 23.03.2016.
  */
 public class Player {
+    
     private String name;
     private int currentGameScore = 0;
     private int championshipScore = 0;
     private int currentThrow = 0;
-    private int[] allThrows = new int[21];
-    private Map<Integer, Integer> allThrowsMap = new HashMap<Integer, Integer>(21);
+    private int[] allThrows = new int[MainGame.ALL_GAME_THROWS];
+    private Map<Integer, Integer> allThrowsMap = new HashMap<Integer, Integer>(MainGame.ALL_GAME_THROWS);
 
     public Map<Integer, Integer> getAllThrowsMap() {
         return allThrowsMap;
@@ -49,6 +50,7 @@ public class Player {
     public int getCurrentGameScore() {
         return currentGameScore;
     }
+
     public int getChampionshipScore() {
         return championshipScore;
     }

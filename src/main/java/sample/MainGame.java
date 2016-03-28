@@ -3,37 +3,24 @@ package sample;
 import java.io.IOException;
 import java.util.*;
 
+/**
+ * Created by Dmytro on 24.03.2016.
+ * In this class described all calculation logic.
+ */
 public class MainGame {
 
     private HashMap<String, Player> playersMap = new HashMap<String, Player>();
+    public static int ALL_GAME_THROWS = 21; // regular frames number * 2 + 1(bonus final frame):
+    // 1->3, 2->5, 3->7, 4->9, 5->11, 6->13, 7->15, 8->17, 9->19, 19->21 11->23, 12->25...
 
-    /**
-     * Method for creating single Player with defined name.
-     * Created player will be put in the PlayersMap: <String, Player>
-     * @param name
-     */
-    public void createPlayer(String name){
-        Player player = new Player(name);
-        playersMap.put(name, player);
-    }
-
-    /**
-     * Method for creating a number of Players with default names like: Player-<Number>
-     * All created players will put in the PlayersMap: <String, Player>
-     * @param quantity
-     */
-    public void createDefaultPlayers(int quantity) {
-        for (int i = 1; i <= quantity; i++) {
-            Player player = new Player("Player-" + i);
-            playersMap.put("Player-" + i, player);
-        }
-    }
+    public static int MAX_FRAME_POINTS = 10;
 
     /**
      * Game start method.
      */
     public void startGame( GameTypeInterface gti ){
-        for (int currentThrow = 1; currentThrow <= 21; currentThrow++) {
+
+        for (int currentThrow = 1; currentThrow <= ALL_GAME_THROWS; currentThrow++) {
             // loop through each of player
             Iterator it = playersMap.entrySet().iterator();
             while (it.hasNext()) {
@@ -58,14 +45,14 @@ public class MainGame {
                     //calculate current score
                     int currentPlayerScore = getCurrentPlayersScore(tmpUsersScoreMap);
                     System.out.println(playerEntry.getKey() + "'s map " + currentThrow + ": " + tmpUsersScoreMap);
-                    System.out.println(playerEntry.getKey() + " "+ currentThrow + ". Current score: " + currentPlayerScore);
+                    System.out.println(playerEntry.getKey() + ": "+ currentThrow + ". Current score: " + currentPlayerScore);
 
                     // add score
                     playerEntry.getValue().setCurrentGameScore(currentPlayerScore);
                 } else {
                     tmpUsersScoreMap.put(currentThrow, 0);
                     System.out.println(playerEntry.getKey() + "'s map: " + currentThrow + ": " + tmpUsersScoreMap);
-                    System.out.println(playerEntry.getKey() + " skipped " + currentThrow + " this throw. Current Score: "
+                    System.out.println(playerEntry.getKey() + ": skipped " + currentThrow + " this throw. Current Score: "
                                                                                         + player.getCurrentGameScore());
                 }
             }
@@ -88,17 +75,17 @@ public class MainGame {
      */
     private boolean isThrowAvailable(int currentThrow, Map<Integer, Integer> tmpUsersScoreMap) {
         boolean result = true;
-        if ( currentThrow > 1 && currentThrow < 20) { // if regular (2 - 19)
+        if ( currentThrow > 1 && currentThrow < ALL_GAME_THROWS-1) { // if regular (2 - 19)
             if (currentThrow % 2 == 0) { // if not 1-st in frame
-                if (tmpUsersScoreMap.get(currentThrow - 1) == 10) { // if previous is Strike
+                if (tmpUsersScoreMap.get(currentThrow - 1) == MAX_FRAME_POINTS) { // if previous is Strike
                     result = false;
                 }
             }
-        } else if (currentThrow == 20 && tmpUsersScoreMap.get(currentThrow - 1) < 10) { // if 10.1 is NOT Strike
+        } else if (currentThrow == ALL_GAME_THROWS-1 && tmpUsersScoreMap.get(currentThrow - 1) < MAX_FRAME_POINTS) { // if 10.1 is NOT Strike
             result = false;
-        } else if (currentThrow == 21) {
-            if (tmpUsersScoreMap.get(currentThrow - 2) < 10 ||    // if 10.1 is NOT strike
-                    tmpUsersScoreMap.get(currentThrow - 2) + tmpUsersScoreMap.get(currentThrow - 1) < 10 ){ // if 10.1 + 10.2 = is NOT Spare
+        } else if (currentThrow == ALL_GAME_THROWS) {
+            if (tmpUsersScoreMap.get(currentThrow - 2) < MAX_FRAME_POINTS ||    // if 10.1 is NOT strike
+                    tmpUsersScoreMap.get(currentThrow - 2) + tmpUsersScoreMap.get(currentThrow - 1) < MAX_FRAME_POINTS ){ // if 10.1 + 10.2 = is NOT Spare
 
                 result = false;
             }
@@ -116,17 +103,15 @@ public class MainGame {
         int throwingCount = 1;
         Iterator it = scoreMap.entrySet().iterator();
         while (it.hasNext()) {
-            Map.Entry<Integer, Integer> scoreEntry = (Map.Entry) it.next();
-
-            if (throwingCount < 19) { //if count < 19
+            if (throwingCount < ALL_GAME_THROWS-2) { //if count < ALL_GAME_THROWS-2
 
                 if (throwingCount % 2 != 0) { // if first in Frame
 
-                    if (scoreMap.get(throwingCount) == 10) { // if Strike (10)
+                    if (scoreMap.get(throwingCount) == MAX_FRAME_POINTS) { // if Strike (MAX_FRAME_POINTS)
 
                         if (scoreMap.get(throwingCount + 2) != null) { // if next elements are filled
 
-                            if (scoreMap.get(throwingCount + 2) == 10) { // if next one Strike
+                            if (scoreMap.get(throwingCount + 2) == MAX_FRAME_POINTS) { // if next one Strike
 
                                 if (scoreMap.get(throwingCount + 4) != null) {
                                     // add to currentVal: (currentVal + count+2 + count+4 ):
@@ -157,8 +142,8 @@ public class MainGame {
                 if (throwingCount % 2 == 0) { // if Spare
 
                     if (scoreMap.size() != 1) {
-                         if (scoreMap.get(throwingCount - 1) != 10) { //if prev not Strike
-                             if (scoreMap.get(throwingCount - 1) + scoreMap.get(throwingCount) == 10) { // if Spare
+                         if (scoreMap.get(throwingCount - 1) != MAX_FRAME_POINTS) { //if prev not Strike
+                             if (scoreMap.get(throwingCount - 1) + scoreMap.get(throwingCount) == MAX_FRAME_POINTS) { // if Spare
                                  if (scoreMap.get(throwingCount + 1) != null) {
                                      // add to currentVal: (currentVal + count+1)
                                      resultScore += scoreMap.get(throwingCount) + scoreMap.get(throwingCount + 1);
@@ -175,16 +160,17 @@ public class MainGame {
                     }
                 }
 
-            } else { // if current >= 19
+            } else { // if current >= ALL_GAME_THROWS-2
                 resultScore += scoreMap.get(throwingCount);
             }
             throwingCount++;
+            it.next();
         }
         return resultScore;
     }
 
     /**
-     * Method calculate and print winner of the game
+     * Method calculate scores fo all players and print winner of the game
      */
     public void printWinner(){
         Player winner = new Player("Winner");
@@ -209,7 +195,11 @@ public class MainGame {
             System.out.println("Winner is: " + winner.getName() + ", with " + winner.getCurrentGameScore()
                     + " points! Congratulations!");
         } else {
-            System.out.println("Winners are: " + winnerList + " Congratulations!");
+            System.out.print("Winners are: ");
+            for (String winnersName : winnerList) {
+                System.out.print(winnersName + ", ");
+            }
+            System.out.println("Congratulations!");
         }
         System.out.println("******************************************************************************************");
     }

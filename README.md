@@ -37,7 +37,9 @@ cpi = new CreateDefaultPlayers(mainGame, 0);
 ## Set score type.
  
 By default filling Score type for Players signed Rundomly, in **_src\main\java\simple.MainExecutor.java_**: 
+```java 
 mainGame.startGame( new GameTypeRandom() );
+```
 
 To customize different filling Score type for Players: 
 - *input from console:*     
@@ -50,6 +52,6 @@ mainGame.startGame( new GameTypeRandom() );
 ```
 - *static for all players:* 
 ```java 
-mainGame.startGame( new GameTypeStatic(<static score in int>) );
+mainGame.startGame( new GameTypeStatic( <staticScore in int> ) );
 ```
 

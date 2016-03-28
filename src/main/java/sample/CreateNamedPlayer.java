@@ -12,15 +12,29 @@ public class CreateNamedPlayer implements CreatePlayerInterface {
         this.names = names;
     }
 
+    /**
+     * Method for create named players, signed in variable "names"
+     */
     public void createPlayers() {
         if (names != null) {
             if (!names[0].equalsIgnoreCase("") ) {
                 for (int i = 0; i < names.length; i++) {
-                    mainGame.createPlayer(names[i]);
+                    createNamedPlayer(names[i]);
                 }
             }
         }
     }
+
+    /**
+     * Method for creating single Player with defined name.
+     * Created player will be put in the PlayersMap: <String, Player>
+     * @param name
+     */
+    public void createNamedPlayer(String name){
+        Player player = new Player(name);
+        mainGame.getPlayersMap().put(name, player);
+    }
+
 }
 
 

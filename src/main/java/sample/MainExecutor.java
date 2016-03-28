@@ -2,34 +2,45 @@ package sample;
 
 /**
  * Created by Dmytro on 23.03.2016.
+ * Class for managing the main application thread.
+ * 1. Initialization ManiGame class.
+ * 2. Defining new players.
+ * 3. Defining scores getting type for players, depends of GameTypeInterface realization:
+ * - input from console:     mainGame.startGame( new GameTypeConsoleInput() );
+ * - randomly:               mainGame.startGame( new GameTypeRandom() );
+ * - static for all players: mainGame.startGame( new GameTypeStatic( <staticScore in int> ) );
+ * - input from GUI:         mainGame.startGame( new GameTypeFromGUI() ); // <- TODO: create GameTypeFromGUI
+ * 4. Showing results and winners.
+ * 5. 'What next?' dialog
  */
 public class MainExecutor {
 
     /**
-     *
-     * New getting scores for players, depends of GameTypeInterface realization:
-     * - input from console:     mainGame.startGame( new GameTypeConsoleInput() );
-     * - randomly:               mainGame.startGame( new GameTypeRandom() );
-     * - static for all players: mainGame.startGame( new GameTypeStatic(<static score in int>) );
-     * - input from GUI:         mainGame.startGame( new GameTypeFromGUI() ); // <- create realization
+     * Main game thread.
      */
     public static void startInteractiveGame(){
-        // filling players:
+        // 1. Initialization ManiGame class.
         MainGame mainGame = new MainGame();
 
-        CreatePlayerInterface cpi = new CreateNamedPlayer(mainGame, "Timo", "Anton");
+        // 2. Defining new players.
+        CreatePlayerInterface cpi;
+
+        // create named players:
+        cpi = new CreateNamedPlayer(mainGame, "Timo", "Anton");
         cpi.createPlayers();
 
+        // create players with default names:
         cpi = new CreateDefaultPlayers(mainGame, 3);
         cpi.createPlayers();
 
-        // filling scores for each player during game:
+        // 3. Defining scores getting type for players, depends of GameTypeInterface realization:
         mainGame.startGame( new GameTypeRandom() ); // <- Change Interface realization to see difference
 
-        // show results and winners:
+        // 4. Showing results and winners:
         mainGame.printWinner();
 
-        // TODO: 24.03.2016 next dialog
+        // 5. 'What next?' dialog
+        // TODO: 24.03.2016 'What next?' dialog
 
     }
 }
