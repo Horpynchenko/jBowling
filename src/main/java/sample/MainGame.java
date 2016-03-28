@@ -10,7 +10,7 @@ import java.util.*;
 public class MainGame {
 
     private Map<String, Player> playersMap = new LinkedHashMap<String, Player>();
-    public static int ALL_GAME_THROWS = 21; // regular frames number * 2 + 1(bonus final frame):
+    public static int ALL_GAME_THROWS = 21; // classic is 21. Regular frames number * 2 + 1(bonus final frame):
     // 1->3, 2->5, 3->7, 4->9, 5->11, 6->13, 7->15, 8->17, 9->19, 19->21...
 
     public static int MAX_FRAME_POINTS = 10;
@@ -120,7 +120,7 @@ public class MainGame {
 
                     if (pointsMap.get( throwingCount ) == MAX_FRAME_POINTS) { // if Strike (MAX_FRAME_POINTS)
 
-                        if (pointsMap.get( throwingCount + 2 ) != null) { // if next elements are filled
+                        if (pointsMap.get( throwingCount + 2 ) != null) { // if next elements are filed
 
                             if (pointsMap.get( throwingCount + 2 ) == MAX_FRAME_POINTS) { // if next one Strike
 
@@ -143,7 +143,7 @@ public class MainGame {
 
                             }
 
-                        } else { // if next elements are not filled
+                        } else { // if next elements are not filed
                             resultPoint += pointsMap.get( throwingCount );
                         }
 

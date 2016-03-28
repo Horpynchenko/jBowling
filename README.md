@@ -34,14 +34,14 @@ To create no default users, sign 0 (zero) as 2-nd parameter (or remove interface
 cpi = new CreateDefaultPlayers(mainGame, 0);
 ```
 
-## Set score type.
+## Set points type.
  
-By default filling Score type for Players signed Rundomly, in **_src\main\java\simple.MainExecutor.java_**: 
+By default Pints filing type for Players signed Rundomly, in **_src\main\java\simple.MainExecutor.java_**: 
 ```java 
 mainGame.startGame( new GameTypeRandom() );
 ```
 
-To customize different filling Score type for Players: 
+To customize different game-points filing type, you can also select one of the following interface realizations: 
 - *input from console:*     
 ```java 
 mainGame.startGame( new GameTypeConsoleInput() );
@@ -52,6 +52,6 @@ mainGame.startGame( new GameTypeRandom() );
 ```
 - *static for all players:* 
 ```java 
-mainGame.startGame( new GameTypeStatic( <staticScore in int> ) );
+mainGame.startGame( new GameTypeStatic( <staticPoints in int> ) );
 ```
 
